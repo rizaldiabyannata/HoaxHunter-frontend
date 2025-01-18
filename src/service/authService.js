@@ -12,6 +12,7 @@ const authService = {
   logout() {
     localStorage.removeItem('token')
     sessionStorage.removeItem('token')
+    api.post('/auth/logout')
   },
 }
 

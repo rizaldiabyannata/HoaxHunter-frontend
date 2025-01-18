@@ -1,4 +1,5 @@
 <template>
+  <NavBar />
   <div class="flex justify-center items-center">
     <h1 class="text-xl">Testing API Connection</h1>
   </div>
@@ -10,9 +11,13 @@
 
 <script>
 import api from '@/service/api'
+import NavBar from '@/components/ui/NavBar.vue'
 
 export default {
   name: 'HomeView',
+  components: {
+    NavBar,
+  },
 
   data() {
     return {

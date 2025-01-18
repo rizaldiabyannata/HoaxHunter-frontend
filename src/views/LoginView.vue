@@ -26,7 +26,7 @@
 import { Input as InputComp } from '@/components/ui/input'
 import { Button as ButtonComp } from '@/components/ui/button'
 import NavBar from '@/components/ui/NavBar.vue'
-import authService from '@/service/authService'
+import { useAuthStore } from '@/stores/auth'
 
 export default {
   name: 'LoginView',
@@ -45,9 +45,10 @@ export default {
 
   methods: {
     async handleLogin() {
+      const authStore = useAuthStore() // Ambil instance store
       try {
         console.log(this.email, this.password) // Debugging untuk melihat input
-        await authService.login({ email: this.email, password: this.password })
+        await authStore.login({ email: this.email, password: this.password }) // Panggil metode login dari store
         this.$router.push('/')
       } catch (error) {
         this.errorMessage = 'Login failed: ' + (error.response?.data?.error || 'Unknown error')
