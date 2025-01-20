@@ -4,13 +4,21 @@ const authService = {
   async login(credentials) {
     const response = await api.post('/auth/login', credentials)
     const token = response.data.token
+    const user = response.data.user
+
+    console.log('respoon data:', response.data)
 
     localStorage.setItem('token', token)
-    return response.data
+    localStorage.setItem('user', JSON.stringify(user))
+
+    console.log('JSON.stringify(user):', JSON.stringify(user))
+
+    return user
   },
 
   logout() {
     localStorage.removeItem('token')
+    localStorage.removeItem('user')
     sessionStorage.removeItem('token')
     api.post('/auth/logout')
   },

@@ -1,15 +1,16 @@
 import { useAuthStore } from '@/stores/auth'
 
-export default function authMiddleware(to, from, next) {
+export default function authMiddleware({ to, next }) {
   const authStore = useAuthStore()
 
   if (!authStore.isAuthenticated) {
-    next({ name: 'login' }) // Redirect to login if not authenticated
-  } else if (to.meta && to.meta.roles && !to.meta.roles.includes(authStore.user.role)) {
-    next({ name: '401' }) // Redirect to unauthorized page if role is not allowed
-  } else if (to.meta && to.meta.adminOnly && authStore.user.role !== 'admin') {
-    next({ name: '401' }) // Redirect to unauthorized page if not admin
-  } else {
-    next()
+    return next({ name: 'login' })
   }
+
+  // Cek role jika meta.roles ada
+  if (to.meta.roles && !to.meta.roles.includes(authStore.user?.role)) {
+    return next({ name: '401' }) // Redirect ke error 401 jika role tidak sesuai
+  }
+
+  return next()
 }

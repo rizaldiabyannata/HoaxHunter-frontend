@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col h-screen w-screen">
-    <NavBar />
+    <!-- <NavBar></NavBar> -->
     <div class="flex flex-row dark:bg-zinc-900 h-full w-full">
       <form
         @submit.prevent="handleLogin"
@@ -25,7 +25,7 @@
 <script>
 import { Input as InputComp } from '@/components/ui/input'
 import { Button as ButtonComp } from '@/components/ui/button'
-import NavBar from '@/components/ui/NavBar.vue'
+// import NavBar from '@/components/NavBar.vue'
 import { useAuthStore } from '@/stores/auth'
 
 export default {
@@ -33,7 +33,7 @@ export default {
   components: {
     InputComp,
     ButtonComp,
-    NavBar,
+    // NavBar,
   },
   data() {
     return {

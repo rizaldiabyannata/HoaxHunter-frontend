@@ -11,7 +11,7 @@
 
 <script>
 import api from '@/service/api'
-import NavBar from '@/components/ui/NavBar.vue'
+import NavBar from '@/components/NavBar.vue'
 
 export default {
   name: 'HomeView',

@@ -16,23 +16,23 @@
         >Profile</router-link
       >
       <button v-if="auth.isAuthenticated" @click="handleLogout" class="text-white">Logout</button>
-      <ToggleSwitchMode />
+      <!-- <ToggleSwitchMode /> -->
     </div>
   </div>
 </template>
 
 <script setup>
 import { useAuthStore } from '@/stores/auth'
-import ToggleSwitchMode from './ToggleSwitchMode.vue'
+// import ToggleSwitchMode from './ui/ToggleSwitchMode.vue'
 
 const auth = useAuthStore()
 
-import { useRouter } from 'vue-router'
+// import { useRouter } from 'vue-router'
 
-const router = useRouter()
+// const router = useRouter()
 
 const handleLogout = () => {
   auth.logout()
-  router.push('/login')
+  this.$router.push('/login')
 }
 </script>

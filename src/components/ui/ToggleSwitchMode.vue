@@ -10,7 +10,7 @@ import { Icon } from '@iconify/vue'
 import { useColorMode } from '@vueuse/core'
 
 // Pass { disableTransition: false } to enable transitions
-const mode = useColorMode({ disableTransition: false })
+const mode = useColorMode()
 </script>
 
 <template>
