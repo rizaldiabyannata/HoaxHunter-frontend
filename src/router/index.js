@@ -50,7 +50,7 @@ router.beforeEach(async (to, from, next) => {
 
   try {
     const response = await api.get('/auth/check', { withCredentials: true })
-    authStore.user = response.data.user // Simpan user hanya jika berhasil diverifikasi
+    authStore.user = response.data.user
   } catch {
     authStore.user = null
   }

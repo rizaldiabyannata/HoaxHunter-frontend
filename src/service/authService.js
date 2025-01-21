@@ -6,18 +6,15 @@ const authService = {
     const token = response.data.token
     const user = response.data.user
 
-    console.log('respoon data:', response)
-
     localStorage.setItem('token', token)
 
     return user
   },
 
-  logout() {
-    localStorage.removeItem('token')
-    localStorage.removeItem('user')
+  async logout() {
+    await api.post('/auth/logout', {}, { withCredentials: true })
+    localStorage.removeItem('token') // Pastikan token dihapus
     sessionStorage.removeItem('token')
-    api.post('/auth/logout')
   },
 }
 
