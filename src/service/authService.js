@@ -2,16 +2,13 @@ import api from './api'
 
 const authService = {
   async login(credentials) {
-    const response = await api.post('/auth/login', credentials)
+    const response = await api.post('/auth/login', credentials, { withCredentials: true })
     const token = response.data.token
     const user = response.data.user
 
-    console.log('respoon data:', response.data)
+    console.log('respoon data:', response)
 
     localStorage.setItem('token', token)
-    localStorage.setItem('user', JSON.stringify(user))
-
-    console.log('JSON.stringify(user):', JSON.stringify(user))
 
     return user
   },

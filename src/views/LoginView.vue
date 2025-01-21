@@ -25,7 +25,6 @@
 <script>
 import { Input as InputComp } from '@/components/ui/input'
 import { Button as ButtonComp } from '@/components/ui/button'
-// import NavBar from '@/components/NavBar.vue'
 import { useAuthStore } from '@/stores/auth'
 
 export default {
@@ -33,22 +32,21 @@ export default {
   components: {
     InputComp,
     ButtonComp,
-    // NavBar,
   },
   data() {
     return {
       email: '',
       password: '',
-      errorMessage: '', // Menyimpan pesan error jika login gagal
+      errorMessage: '',
     }
   },
 
   methods: {
     async handleLogin() {
-      const authStore = useAuthStore() // Ambil instance store
+      const authStore = useAuthStore()
       try {
         console.log(this.email, this.password) // Debugging untuk melihat input
-        await authStore.login({ email: this.email, password: this.password }) // Panggil metode login dari store
+        await authStore.login({ email: this.email, password: this.password })
         this.$router.push('/')
       } catch (error) {
         this.errorMessage = 'Login failed: ' + (error.response?.data?.error || 'Unknown error')
